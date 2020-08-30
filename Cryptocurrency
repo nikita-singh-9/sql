@@ -1,0 +1,25 @@
+ SELECT * 
+ FROM transactions;
+
+ SELECT sum(money_in) AS 'deposits'
+ FROM transactions;
+
+SELECT sum(money_out) AS 'withdrawals'
+ FROM transactions;
+
+SELECT currency, count(*)
+FROM transactions
+WHERE money_in IS NOT NULL
+GROUP BY 1;
+
+SELECT MAX(money_in), MAX(money_out)
+FROM transactions;
+
+SELECT ROUND(AVG(money_in),2)
+FROM transactions
+WHERE currency ='ETH';
+
+
+SELECT date, round(avg(money_in),2) AS 'Avg. Deposit', round(avg(money_out),2) AS 'Avg. Withdrawal'
+FROM transactions
+GROUP BY 1;
