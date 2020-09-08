@@ -1,0 +1,38 @@
+SELECT sum(population)
+FROM population_years
+JOIN countries
+ON countries.id=population_years.country_id
+WHERE countries.continent='Oceania' AND population_years.year='2005';
+
+SELECT avg(population_years.population)
+FROM population_years
+JOIN countries
+ON countries.id=population_years.country_id
+WHERE countries.continent='South America' AND population_years.year='2003';
+
+
+SELECT  DISTINCT countries.name, population_years.country_id, SUM(population_years.population)
+FROM population_years
+JOIN countries
+ON countries.id=population_years.country_id
+GROUP BY 1
+ORDER BY 3
+LIMIT 1;
+
+SELECT avg(population_years.population)
+FROM population_years
+JOIN countries
+ON countries.id=population_years.country_id
+WHERE countries.name='Poland';
+
+Select name
+from countries
+where name like "%THE%";
+
+SELECT sum(population_years.population), population_years.year,countries.continent
+FROM population_years
+JOIN countries
+ON countries.id=population_years.country_id
+WHERe population_years.year='2010'
+GROUP BY 3;
+
